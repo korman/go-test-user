@@ -16,10 +16,13 @@ type UserCenterServerImp struct {
 
 func (m *UserCenterServerImp) DoTest(context context.Context, req *grpc_server.DoTestReq) (*grpc_server.DoTestResp, error) {
 	println(req.Text)
-	return nil, nil
+
+	result := &grpc_server.DoTestResp{Result: 0}
+	return result, nil
 }
 
 func main() {
+	println("启动服务器……")
 	lis, err := net.Listen("tcp", ":9899")
 
 	if err != nil {
